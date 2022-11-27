@@ -11,14 +11,13 @@ var numbers = "0123456789".split("");
 
 var upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
 
-var userInput = [{upperCase}, {lowerCase}, {sCharacaters}, {numbers}]
+var userInput = [];
 
-var createdPassword = '';
+var createdPassword = [];
 //will be used to generate final password
 
-const passwordAdded = lowerCase + sCharacaters + numbers + upperCase;
+//console.log('typesArr:', userInput);
 
-console.log('typesArr:', userInput);
 function passwordCriteria(){
 //asks how long password should be
   var passwordLength = parseInt (prompt("How many characters would you like your password to contain?"));
@@ -31,21 +30,23 @@ function passwordCriteria(){
   alert("Password Length must be provided as an Integer")
   return null;
  }
+//eventually want to reprompt if incorrect
+//creates true or false prompts that determine characters
+var lowerCase = confirm("Do you want Lower Case?");
+ var upperCase = confirm("Do you want Upper Case?");
+ var number = confirm("Do you want Numbers?");
+ var specialChar = confirm("Do you want Special Characters");
+ 
 
- var passwordCharacters = prompt("What type of characters would youlike to include? upperCase,lowerCase,sCharacters,numbers");
-  if(passwordCharacters === "upperCase"+"lowerCase","sCharacters","numbers"){
-    return;
   }
-  if(passwordCharacters === "upperCase"+"lowerCase","scharacters"){
-    return;
+
+function criteriaCheck(){
+  var criteriaSelected;
+  if(lowerCase){
+    criteriaSelected = true;
+
   }
-  if(passwordCharacters === "uppercase" + "lowerCase"){
-    return;
-  }
-  if(passwordCharacters === "upperCase"){
-    return;
-  }
-  if()
+}
 
   //create variable to equal these possibilites then set the expressions equal to each other
 //this is supposed to check to see what array they are pulling from
@@ -61,7 +62,7 @@ function passwordCriteria(){
 
  //return variable created 
 
-}
+//}
 //create a Math.random function
 
 //create an var with objects that have variables and then set the variables equal to something so that i can call it back
