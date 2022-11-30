@@ -2,7 +2,18 @@
 
 //create global variables to store all character types, uppercase/lowercase alpha,numbers,special characters
 
-//var alphabet = "abcd".split("");
+var passwordText;
+
+//record the answers from the questions
+//confirm what criteria was selected
+//push to an array that will randomize the letters
+//
+var generateBtn = document.querySelector("#generate");
+
+function generatePassword(){
+  //var alphabet = "abcd".split("");
+
+
 var lowerCase = "abcdefghijklmnopqrstuvwxyz".split("");
 
 var sCharacaters = "!?_*$><%^".split("");
@@ -16,9 +27,9 @@ var userInput = [];
 var createdPassword = [];
 //will be used to generate final password
 
-//console.log('typesArr:', userInput);
+var myPassword;
 
-function passwordCriteria(){
+//function passwordCriteria(){
 //asks how long password should be
   var passwordLength = parseInt (prompt("How many characters would you like your password to contain?"));
   //validate user input
@@ -30,62 +41,102 @@ function passwordCriteria(){
   alert("Password Length must be provided as an Integer")
   return null;
  }
+
 //eventually want to reprompt if incorrect
-//creates true or false prompts that determine characters
-var lowerCase = confirm("Do you want Lower Case?");
- var upperCase = confirm("Do you want Upper Case?");
+//creates true or false prompts that determine characters they want to include
+var lower = confirm("Do you want Lower Case?");
+ var upper = confirm("Do you want Upper Case?");
  var number = confirm("Do you want Numbers?");
  var specialChar = confirm("Do you want Special Characters");
+
+ //if statement that makes the prompts the user to select at least one of the criteria
+ if (
+  lower === false &&
+  upper === false &&
+  number === false &&
+  specialChar === false 
+ ){
+  alert("Please select at least one characters!")
+  return null;
+ }
+//}
+
+
+//functions that push characters into the final array
+
+
+//function criteriaSelected (){
+  //var selectedCriteria;
+  if(lower === true){
+    userInput.push("lowercase");
+  }
+  if(upper === true){
+    userInput.push("uppercase");
+  }
+  if(number === true){
+    userInput.push("numbers");
+  }
+  if(specialChar === true){
+    userInput.push("spec");
+  }
  
+  //return selectedCriteria;
+//}
 
-  }
 
-function criteriaCheck(){
-  var criteriaSelected;
-  if(lowerCase){
-    criteriaSelected = true;
-
-  }
+function choseLowerCase(){
+  var lilLetters = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  return lilLetters; 
 }
 
-  //create variable to equal these possibilites then set the expressions equal to each other
-//this is supposed to check to see what array they are pulling from
+function choseUpperCase(){
+  var bigLetters = upperCase[Math.floor(Math.random() * upperCase.length)];
+  return bigLetters; 
+}
 
-  //for( let i = 0; i< length;i +){}
- //if(passwordCharacter === )
+function choseNumbers(){
+  var numeric = numbers[Math.floor(Math.random() * numbers.length)];
+  return numeric; 
+}
 
- //ask what type of character types they would like to include
+function choseSpecChar(){
+  var oddCharacters = sCharacaters[Math.floor(Math.random() * sCharacaters.length)];
+  return oddCharacters; 
+}
 
- //validate that the user selected a character type
+//functions that will take selected characters for password
 
- //create storage for user input as a variable look at lesson 21 and 22
 
- //return variable created 
-
+//if(criteriaSelected){
+  for (let i = 0; i < passwordLength; i++) {
+    var passwordOptions = userInput[Math.floor(Math.random() * userInput.length)];
+    if(passwordOptions === "lowercase"){
+      createdPassword.push(choseLowerCase());
+    }
+    if(passwordOptions === "uppercase"){
+      createdPassword.push(choseUpperCase());
+    }
+    if(passwordOptions === "numbers"){
+      createdPassword.push(choseNumbers());
+    }
+    if(passwordOptions === "spec"){
+      createdPassword.push(choseSpecChar());
+    }
+  }
 //}
-//create a Math.random function
 
-//create an var with objects that have variables and then set the variables equal to something so that i can call it back
+console.log(createdPassword);
+console.log(userInput);
 
-
-function generatePassword(){
-
-  var criteria = passwordCriteria();
+return createdPassword.join('');
+  //var criteria = passwordCriteria();
+  
   console.log("button clicked");
   
   //possible characters variable that is an array where character types will be inserted. 
-return "Generated password will go herw"
+
 }
 
-
-
-
-
-
-
-
-
-var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
